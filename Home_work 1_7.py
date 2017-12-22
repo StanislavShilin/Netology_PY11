@@ -16,6 +16,10 @@ class Animal:
         print("Максимальная скорость животного по имени {} при перемещении составила {}"
               .format(self.name, self.max_speed_of_movement))
 
+    def __init__(self, name, weight):
+        self.name = name
+        self.weight = weight
+
 
 class Mammals(Animal):
     number_of_feet = 4
@@ -76,27 +80,21 @@ class Goose(Bird):
     max_speed_of_fly = 22
 
 
-cow_1 = Cow()
-cow_1.name = "Вика"
-cow_1.weight = 110
+cow_1 = Cow("Вика", 110)
 cow_1.kick(2)
 print(cow_1.number_of_feet)
 cow_1.wash()
 cow_1.feed(5)
 cow_1.feed(10)
 
-goat_1 = Sheep()
-goat_1.name = "Анна"
-goat_1.weight = 60
+goat_1 = Sheep("Анна", 60)
 goat_1.kick(1)
 print(goat_1.number_of_feet)
 goat_1.wash()
 goat_1.feed(2)
 goat_1.feed(4)
 
-goose_1 = Goose()
-goose_1.name = "Виктор"
-goose_1.weight = 25
+goose_1 = Goose("Виктор", 25)
 goose_1.kick(5)
 print(goose_1.number_of_feet)
 goose_1.wash()
