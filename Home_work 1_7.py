@@ -79,7 +79,6 @@ class Goose(Bird):
     max_speed_of_movement = 16
     max_speed_of_fly = 22
 
-
 cow_1 = Cow("Вика", 110)
 cow_1.kick(2)
 print(cow_1.number_of_feet)
