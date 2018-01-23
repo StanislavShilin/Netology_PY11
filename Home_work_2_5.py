@@ -13,5 +13,5 @@ for photo in list_of_photo:
     way_to_photo = os.path.join(way_to_folder_with_photo, photo)
     file_extension = os.path.splitext(way_to_photo)
     if file_extension[1].lower() == '.jpg':
-        way_to_result_photo = os.path.join(way_to_folder_with_result_photo, file_extension[0] + "Resize" + file_extension[1])
-        process = subprocess.run("convert {} -resize 200 {}".format(way_to_photo, way_to_result_photo))
+        way_to_result_photo = os.path.join(way_to_folder_with_result_photo, photo)
+        process = os.popen("convert {} -resize 200 {}".format(way_to_photo, way_to_result_photo))
