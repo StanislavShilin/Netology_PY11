@@ -1,5 +1,4 @@
 import os
-import subprocess
 
 folder_with_photo = "Source";
 folder_with_result_photo = "Result";
@@ -7,6 +6,8 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 
 way_to_folder_with_photo = os.path.join(current_dir, folder_with_photo)
 way_to_folder_with_result_photo = os.path.join(current_dir, folder_with_result_photo)
+if not os.path.exists(way_to_folder_with_result_photo):
+    os.mkdir(way_to_folder_with_result_photo)
 
 list_of_photo = os.listdir(way_to_folder_with_photo)
 for photo in list_of_photo:
