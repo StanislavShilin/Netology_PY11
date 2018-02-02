@@ -40,41 +40,41 @@ import os
 migrations = 'Migrations'
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
-if __name__ == '__main__':
+def get_list_of_all_files_name():
+    list_of_all_files_name = os.listdir(os.path.join(current_dir, migrations))
+    list_of_sql_files_name = []
+    for file_name in list_of_all_files_name:
+        file_extension = os.path.splitext(os.path.join(current_dir, file_name))
+        if file_extension[1] == '.sql':
+            list_of_sql_files_name.append(file_name)
+    return list_of_sql_files_name
 
-    def get_list_of_all_files_name():
-        list_of_all_files_name = (os.listdir(os.path.join(current_dir, migrations)))
-        list_of_sql_files_name = []
-        for file_name in list_of_all_files_name:
-            file_extension = os.path.splitext(os.path.join(current_dir, file_name))
-            if file_extension[1] == '.sql':
-                list_of_sql_files_name.append(file_name)
-        return list_of_sql_files_name
 
-    def get_list_of_files_with_search_text(list_of_files_name, search_text):
-        list_of_files_with_search_text = []
-        for file_name in list_of_files_name:
-            with open(os.path.join(current_dir, migrations, file_name)) as f:
-                if search_text in f.read():
-                    list_of_files_with_search_text.append(file_name)
-        return list_of_files_with_search_text
-
-    def print_information_about_files_with_search_text(list_for_print):
-        if len(list_for_print) > 2:
-            print('... большой список файлов ...')
-        else:
-            for file_name in list_for_print:
-                print('{}/{}'.format(migrations, file_name))
-
-        print('Всего: {}'.format(len(list_for_print)))
-
+def get_list_of_files_with_search_text(list_of_files_name, search_text):
     list_of_files_with_search_text = []
+    for file_name in list_of_files_name:
+        with open(os.path.join(current_dir, migrations, file_name)) as f:
+            if search_text in f.read():
+                list_of_files_with_search_text.append(file_name)
+    return list_of_files_with_search_text
+
+
+def print_information_about_files_with_search_text(list_for_print):
+    if len(list_for_print) > 2:
+        print('... большой список файлов ...')
+    else:
+        for file_name in list_for_print:
+            print(os.path.join(migrations, file_name))
+
+    print('Всего: {}'.format(len(list_for_print)))
+
+list_of_files_with_search_text = []
+if __name__ == '__main__':
     while True:
-        if len(list_of_files_with_search_text) == 0:
+        if not list_of_files_with_search_text:
             list_for_search = get_list_of_all_files_name()
         else:
             list_for_search = list_of_files_with_search_text
         search_text = input('Введите строку:')
         list_of_files_with_search_text = get_list_of_files_with_search_text(list_for_search, search_text)
         print_information_about_files_with_search_text(list_of_files_with_search_text)
-    pass
