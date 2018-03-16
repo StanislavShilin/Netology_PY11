@@ -56,5 +56,5 @@ friends = api.friends.get(user_id=id, fields='deactivated')
 groups_without_friends = get_groups_without_friends(friends, api, groups_id)
 data_about_groups = get_data_about_groups(groups['items'], groups_without_friends)
 current_dir = os.path.dirname(os.path.abspath(__file__))
-with open(os.path.join(current_dir, 'groups.json '), 'w', encoding='utf-8') as file:
+with open(os.path.join(current_dir, 'groups.json'), 'w', encoding='utf-8') as file:
     json.dump(data_about_groups, file)
