@@ -26,8 +26,8 @@ def get_groups_without_friends(friends, api, groups):
             continue
         time.sleep(2)
         result = list(set(result) - set(friend_groups['items']))
-        if i == 10:
-            break
+        #if i == 10:
+            #break
     return result
 
 
