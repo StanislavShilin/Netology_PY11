@@ -1,8 +1,6 @@
 import json
 import time
 import os
-import types
-
 import vk
 
 
